@@ -54,11 +54,17 @@
       { "devDependencies": ["**/*.spec.js"] }
     ],
     "prettier/prettier": [
-      "error",
+      "off",
       { "singleQuote": true, "jsxSingleQuote": true }
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
     "react/react-in-jsx-scope": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"]
   },
