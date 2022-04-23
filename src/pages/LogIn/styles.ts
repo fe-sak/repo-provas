@@ -6,17 +6,13 @@ export const Viewport = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 300px;
-  height: auto;
+  width: 464px;
+  height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-
-  @media (max-width: 360px) {
-    padding: 0 2%;
-  }
 `;
 
 export const SignUpOptions = styled.div`
@@ -31,8 +27,8 @@ export const PageName = styled.span`
 `;
 
 export const Logo = styled.img`
-  width: 100%;
-  aspect-ratio: 4.59842519685;
+  width: 292px;
+  height: 63.5px;
   margin-top: 20px;
   background-color: white;
 `;
