@@ -4,5 +4,6 @@ import styled from 'styled-components';
 export const StyledLink = styled(Link)`
   color: #4673cacc;
   text-decoration: none;
-  font: 700 15px 'Poppins';
+  font: 500 12px 'Roboto';
+  text-decoration-line: underline;
 `;

@@ -3,17 +3,28 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { Viewport } from './components/Viewport/Viewport';
+import { AuthProvider } from './contexts/AuthContext';
+import { ThemesProvider } from './contexts/ThemeContext';
+import { Home } from './pages/Home';
 import { LogIn } from './pages/LogIn';
 import { SignUp } from './pages/SignUp';
 
 export const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<LogIn />} />
-        <Route path='/signup' element={<SignUp />} />
-      </Routes>
-      <ToastContainer />
-    </BrowserRouter>
+    <ThemesProvider>
+      <AuthProvider>
+        <Viewport>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<LogIn />} />
+              <Route path='/signup' element={<SignUp />} />
+              <Route path='/home' element={<Home />} />
+            </Routes>
+            <ToastContainer />
+          </BrowserRouter>
+        </Viewport>
+      </AuthProvider>
+    </ThemesProvider>
   );
 };
