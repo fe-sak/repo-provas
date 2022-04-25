@@ -2,6 +2,7 @@ import { FC, useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+import * as api from '../../api/api';
 import AuthPagesContainer from '../../components/AuthPagesContainer/AuthPagesContainer';
 import { Form, Input } from '../../components/FormStyledComponents';
 import { Logo } from '../../components/Logo';
@@ -10,7 +11,6 @@ import { StyledLink } from '../../components/styled components/StyledLink';
 import { SubmitButton } from '../../components/SubmitButton';
 import { toastSuccess } from '../../components/toasts';
 import { AuthContext } from '../../contexts/AuthContext';
-import * as services from '../../services/axios';
 import { errorHandler } from '../../utils/errorHandler';
 import { required, pattern } from '../../utils/reactHookFormConfig';
 
@@ -36,15 +36,13 @@ export const LogIn: FC = () => {
   async function submitForm(formValues: IForm) {
     try {
       setLoading(true);
-      const { data: token }: { data: string } = await services.logIn(
-        formValues
-      );
+      const { data: token }: { data: string } = await api.logIn(formValues);
       login(token);
       toastSuccess('Entrando...');
       setTimeout(() => {
         navigate('/home');
         setLoading(false);
-      }, 3000);
+      }, 1500);
     } catch (error) {
       setLoading(false);
       errorHandler(error);

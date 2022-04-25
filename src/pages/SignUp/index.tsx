@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+import * as services from '../../api/api';
 import AuthPagesContainer from '../../components/AuthPagesContainer/AuthPagesContainer';
 import { Form, Input } from '../../components/FormStyledComponents';
 import { Logo } from '../../components/Logo';
@@ -9,7 +10,6 @@ import { PageName } from '../../components/PageName';
 import { StyledLink } from '../../components/styled components/StyledLink';
 import { SubmitButton } from '../../components/SubmitButton';
 import { toastSuccess } from '../../components/toasts';
-import * as services from '../../services/axios';
 import { errorHandler } from '../../utils/errorHandler';
 import {
   required,
@@ -52,7 +52,7 @@ export const SignUp: FC = () => {
       toastSuccess('Usuário criado! Entrando na página de login...');
       setTimeout(() => {
         navigate('/');
-      }, 3000);
+      }, 1500);
     } catch (error) {
       setLoading(false);
       errorHandler(error);
