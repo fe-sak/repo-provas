@@ -33,6 +33,7 @@ interface ITests {
         tests: {
           name: string;
           pdfUrl: string;
+          teacher: string;
           category: {
             name: string;
           };

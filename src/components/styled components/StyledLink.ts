@@ -5,5 +5,9 @@ export const StyledLink = styled(Link)`
   color: #4673cacc;
   text-decoration: none;
   font: 500 12px 'Roboto';
-  text-decoration-line: underline;
+
+  :hover {
+    font-weight: 700;
+    text-decoration-line: underline;
+  }
 `;
