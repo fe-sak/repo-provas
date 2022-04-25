@@ -21,7 +21,7 @@ export function logIn(body: ILogin) {
   return axios.post(`${BASE_URL}/login`, body);
 }
 
-interface ITests {
+interface IDataByDisciplines {
   terms: {
     number: number;
     disciplines: {
@@ -42,8 +42,39 @@ interface ITests {
     }[];
   }[];
 }
-export type ITestsData = ITests | null;
-export function getTests(token: string) {
+
+export type DataByDisciplines = IDataByDisciplines | null;
+
+export function getTestsByDisciplines(token: string) {
   const config = createConfig(token);
-  return axios.get<ITestsData>(`${BASE_URL}/tests`, config);
+
+  return axios.get<DataByDisciplines>(`${BASE_URL}/tests`, config);
+}
+
+interface IDataByTeachers {
+  tests: {
+    name: string;
+    pdfUrl: string;
+    category: {
+      name: string;
+    };
+    disciplineTeacher: {
+      teacher: {
+        name: string;
+      };
+      discipline: {
+        name: string;
+      };
+    };
+  }[];
+}
+
+export type DataByTeachers = IDataByTeachers | null;
+export function getTestsByTeachers(token: string) {
+  const config = createConfig(token);
+
+  return axios.get<DataByTeachers>(
+    `${BASE_URL}/tests/?byTeachers=true`,
+    config
+  );
 }

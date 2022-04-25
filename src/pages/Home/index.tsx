@@ -8,7 +8,7 @@ import { TopMenu } from '../../components/TopMenu';
 export type toggles = 'DISCIPLINA' | 'PESSOA INSTRUTORA' | 'ADICIONAR' | null;
 
 export const Home: FC = () => {
-  const [toggle, setToggle] = useState<toggles>('DISCIPLINA');
+  const [toggle, setToggle] = useState<toggles>('PESSOA INSTRUTORA');
   const auth = localStorage.getItem('auth');
   const navigate = useNavigate();
 
