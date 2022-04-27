@@ -18,11 +18,11 @@ export const ToggleView: FC<IProps> = ({ toggle, handleChange }) => {
 
   return (
     <ToggleButtonGroup
-      value={toggle}
-      defaultValue='DISCIPLINA'
       exclusive
-      onChange={handleChange}
       fullWidth
+      defaultValue='DISCIPLINA'
+      value={toggle}
+      onChange={handleChange}
       color='secondary'
       sx={{
         display: 'flex',

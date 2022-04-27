@@ -86,6 +86,7 @@ export async function getDataByDiscipline(token: string) {
   }
 }
 export type ParsedDataByTeachers = {
+  teachersSearch: string[];
   teachers: {
     name: string;
     categories: {
@@ -113,7 +114,6 @@ export async function getDataByTeachers(token: string) {
     const { data }: { data: api.DataByTeachers } = await api.getTestsByTeachers(
       token
     );
-    console.log({ data });
 
     if (data === null) return null;
 
@@ -123,6 +123,7 @@ export async function getDataByTeachers(token: string) {
     const teachers = removeDuplicates(teachersDuplicated);
 
     const parsedData: ParsedDataByTeachers = {
+      teachersSearch: teachers,
       teachers: teachers.map((teacher) => ({
         name: teacher,
         categories: removeDuplicates(
@@ -142,8 +143,6 @@ export async function getDataByTeachers(token: string) {
         })),
       })),
     };
-    console.log({ teachers });
-    // console.log({ parsedData });
 
     return parsedData;
   } catch (error) {
