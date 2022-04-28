@@ -4,8 +4,9 @@
     "plugin:react/recommended",
     "airbnb",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended"
+    "plugin:cypress/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -17,7 +18,8 @@
     "react",
     "@typescript-eslint",
     "eslint-plugin-import-helpers",
-    "prettier"
+    "prettier",
+    "cypress"
   ],
   "rules": {
     "no-unused-vars": "off",

@@ -9,7 +9,7 @@ import { SearchBarContext } from '../../contexts/SearchBarContext';
 export type toggles = 'DISCIPLINA' | 'PESSOA INSTRUTORA' | 'ADICIONAR';
 
 export const Home: FC = () => {
-  const [toggle, setToggle] = useState<toggles>('DISCIPLINA');
+  const [toggle, setToggle] = useState<toggles>('ADICIONAR');
   const { setSearch } = useContext(SearchBarContext);
   const auth = localStorage.getItem('auth');
   const navigate = useNavigate();
