@@ -12,12 +12,14 @@ import { filterByDiscipline } from '../../utils/searchFilters';
 import { SmartAccordion } from '../Accordion';
 import { LoadingSpinner } from '../Loader/Loader';
 import { StyledLink } from '../styled components/StyledLinkMUI';
+import { TestByDiscipline } from '../TestBydiscipline';
 
 export const TestsByDisciplines: FC = () => {
   const { auth } = useContext(AuthContext);
   const { search, setSearchArray, setSearch } = useContext(SearchBarContext);
 
   const [tests, setTests] = useState<ParsedDataByDisciplines>(null);
+  console.log(tests);
   const [filteredTests, setFilteredTests] =
     useState<ParsedDataByDisciplines>(null);
 
@@ -58,23 +60,14 @@ export const TestsByDisciplines: FC = () => {
                   </Typography>
                 ) : (
                   discipline.categories.map((category) => (
-                    <List key={`${discipline.name} ${category.name}`}>
+                    <List
+                      key={`${discipline.name} ${category.name} ${term.number}`}
+                    >
                       <Typography variant='button'>{category.name}</Typography>
                       {category.tests
                         .filter((test) => test.pdfUrl !== undefined)
                         .map((test) => (
-                          <ListItem key={`${category.name} ${test.name}`}>
-                            <StyledLink
-                              href={test.pdfUrl}
-                              key={test.name}
-                              target='_blank'
-                            >
-                              {test.name}
-                              <Typography variant='caption' color='gray'>
-                                {`  (${test.teacher})`}
-                              </Typography>
-                            </StyledLink>
-                          </ListItem>
+                          <TestByDiscipline test={test} />
                         ))}
                     </List>
                   ))

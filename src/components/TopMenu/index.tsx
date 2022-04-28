@@ -1,7 +1,7 @@
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import { Autocomplete, InputAdornment } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import { FC, useContext, useRef } from 'react';
+import { FC, useContext } from 'react';
 
 import { SearchBarContext } from '../../contexts/SearchBarContext';
 import { toggles } from '../../pages/Home';
@@ -16,8 +16,6 @@ interface IToggles {
 export const TopMenu: FC<IToggles> = ({ toggle }) => {
   const placeholder = `Pesquise por ${toggle.toLowerCase()}`;
   const { search, searchArray, setSearch } = useContext(SearchBarContext);
-  const inputRef = useRef(null);
-  console.log(inputRef);
 
   const InputHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -46,7 +44,6 @@ export const TopMenu: FC<IToggles> = ({ toggle }) => {
         options={searchArray.map((option) => option)}
         renderInput={(params) => (
           <TextField
-            ref={inputRef}
             {...params}
             value={search}
             onChange={InputHandleChange}

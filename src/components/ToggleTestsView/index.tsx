@@ -8,7 +8,7 @@ import { TestsByTeachers } from '../TestsByTeachers';
 interface IProps {
   toggle: toggles;
 }
-export const Tests: FC<IProps> = ({ toggle }) => {
+export const ToggleTestsView: FC<IProps> = ({ toggle }) => {
   if (toggle === 'DISCIPLINA') return <TestsByDisciplines />;
   if (toggle === 'PESSOA INSTRUTORA') return <TestsByTeachers />;
 

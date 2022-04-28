@@ -10,8 +10,8 @@ export function filterByTeacher(
     ...tests,
     teachers: tests.teachers.filter(
       (teacher) =>
-        teacher.name.toLocaleLowerCase().search(search.toLocaleLowerCase()) !==
-          -1 || search === ''
+        teacher.name.toLocaleLowerCase() === search.toLocaleLowerCase() ||
+        search === ''
     ),
   };
   return filteredTests;
@@ -26,9 +26,8 @@ export function filterByDiscipline(
   const filteredTerms = tests.terms.filter((term) =>
     term.disciplines.find(
       (discipline) =>
-        discipline.name
-          .toLocaleLowerCase()
-          .search(search.toLocaleLowerCase()) !== -1 || search === ''
+        discipline.name.toLocaleLowerCase() === search.toLocaleLowerCase() ||
+        search === ''
     )
   );
 

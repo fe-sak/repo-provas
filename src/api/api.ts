@@ -31,9 +31,11 @@ interface IDataByDisciplines {
           name: string;
         };
         tests: {
+          id: number;
           name: string;
           pdfUrl: string;
           teacher: string;
+          views: number;
           category: {
             name: string;
           };
@@ -53,8 +55,10 @@ export function getTestsByDisciplines(token: string) {
 
 interface IDataByTeachers {
   tests: {
+    id: number;
     name: string;
     pdfUrl: string;
+    views: number;
     category: {
       name: string;
     };
@@ -77,4 +81,10 @@ export function getTestsByTeachers(token: string) {
     `${BASE_URL}/tests/?byTeachers=true`,
     config
   );
+}
+
+export function addView(testId: number, token: string) {
+  const config = createConfig(token);
+
+  return axios.post(`${BASE_URL}/tests/${testId}`, {}, config);
 }

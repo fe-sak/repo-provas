@@ -1,5 +1,4 @@
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
 import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
 
@@ -9,7 +8,7 @@ import { getDataByTeachers, ParsedDataByTeachers } from '../../services';
 import { filterByTeacher } from '../../utils/searchFilters';
 import { SmartAccordion } from '../Accordion';
 import { LoadingSpinner } from '../Loader/Loader';
-import { StyledLink } from '../styled components/StyledLinkMUI';
+import { TestByTeacher } from '../TestByTeacher';
 
 export const TestsByTeachers: FC = () => {
   const { auth } = useContext(AuthContext);
@@ -45,18 +44,7 @@ export const TestsByTeachers: FC = () => {
             <List key={category.name}>
               <Typography variant='button'>{category.name}</Typography>
               {category.tests.map((test) => (
-                <ListItem key={`${category.name} ${test.name}`}>
-                  <StyledLink
-                    href={test.pdfUrl}
-                    key={test.name}
-                    target='_blank'
-                  >
-                    {test.name}
-                    <Typography variant='caption' color='gray'>
-                      {`  (${test.disciplineTeacher.discipline.name})`}
-                    </Typography>
-                  </StyledLink>
-                </ListItem>
+                <TestByTeacher category={category} test={test} />
               ))}
             </List>
           ))}

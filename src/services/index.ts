@@ -9,9 +9,11 @@ export type ParsedDataByDisciplines = {
       categories: {
         name: string;
         tests: {
+          id: number;
           name: string;
           pdfUrl: string;
           teacher: string;
+          views: number;
         }[];
       }[];
     }[];
@@ -30,9 +32,11 @@ export async function getDataByDiscipline(token: string) {
   type tests = {
     name: string;
     tests: {
+      id: number;
       name: string;
       pdfUrl: string;
       teacher: string;
+      views: number;
     }[];
   };
 
@@ -58,9 +62,11 @@ export async function getDataByDiscipline(token: string) {
                         (innerTest) => innerTest.category === test.category
                       )
                       .map((test) => ({
+                        id: test.id,
                         name: test.name,
                         pdfUrl: test.pdfUrl,
                         teacher: disciplineTeacher.teacher.name,
+                        views: test.views,
                       })),
                   }))
                   .reduce(
@@ -76,7 +82,8 @@ export async function getDataByDiscipline(token: string) {
             ),
           })),
         }))
-        .filter((term) => term.disciplines.length !== 0),
+        .filter((term) => term.disciplines.length !== 0)
+        .sort(),
     };
 
     return parsedData;
@@ -92,8 +99,10 @@ export type ParsedDataByTeachers = {
     categories: {
       name: string;
       tests: {
+        id: number;
         name: string;
         pdfUrl: string;
+        views: number;
         category: {
           name: string;
         };
@@ -124,24 +133,26 @@ export async function getDataByTeachers(token: string) {
 
     const parsedData: ParsedDataByTeachers = {
       teachersSearch: teachers,
-      teachers: teachers.map((teacher) => ({
-        name: teacher,
-        categories: removeDuplicates(
-          data.tests
-            .filter((test) => test.disciplineTeacher.teacher.name === teacher)
-            .map((test) => test.category.name)
-            .sort()
-        ).map((category) => ({
-          name: category,
-          tests: data.tests
-            .map((test) => test)
-            .filter(
-              (test) =>
-                test.category.name === category &&
-                test.disciplineTeacher.teacher.name === teacher
-            ),
-        })),
-      })),
+      teachers: teachers
+        .map((teacher) => ({
+          name: teacher,
+          categories: removeDuplicates(
+            data.tests
+              .filter((test) => test.disciplineTeacher.teacher.name === teacher)
+              .map((test) => test.category.name)
+              .sort()
+          ).map((category) => ({
+            name: category,
+            tests: data.tests
+              .map((test) => test)
+              .filter(
+                (test) =>
+                  test.category.name === category &&
+                  test.disciplineTeacher.teacher.name === teacher
+              ),
+          })),
+        }))
+        .sort(),
     };
 
     return parsedData;
@@ -151,4 +162,8 @@ export async function getDataByTeachers(token: string) {
     errorHandler(error);
     return null;
   }
+}
+
+export async function addView(testId: number, token: string) {
+  await api.addView(testId, token);
 }
