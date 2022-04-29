@@ -19,7 +19,7 @@ export const TestsByDisciplines: FC = () => {
   const { search, setSearchArray, setSearch } = useContext(SearchBarContext);
 
   const [tests, setTests] = useState<ParsedDataByDisciplines>(null);
-  console.log(tests);
+
   const [filteredTests, setFilteredTests] =
     useState<ParsedDataByDisciplines>(null);
 
@@ -32,9 +32,9 @@ export const TestsByDisciplines: FC = () => {
     if (newData) {
       const disciplines = extractDisciplines(newData);
       setSearchArray(disciplines);
+      setTests(newData);
+      setFilteredTests(newData);
     }
-    setTests(newData);
-    setFilteredTests(newData);
   }, []);
 
   useEffect(() => {

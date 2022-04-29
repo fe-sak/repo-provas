@@ -2,8 +2,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Box, ListItem, Typography } from '@mui/material';
 import { FC, useContext, useState } from 'react';
 
+import * as api from '../../api/api';
 import { AuthContext } from '../../contexts/AuthContext';
-import * as services from '../../services';
 import { StyledLink } from '../styled components/StyledLinkMUI';
 
 interface IProps {
@@ -39,7 +39,7 @@ export const TestByTeacher: FC<IProps> = ({ category, test }) => {
 
   const addView = async (testId: number) => {
     setRenderedViews((current) => current + 1);
-    await services.addView(testId, auth);
+    await api.addView(testId, auth);
   };
 
   return (

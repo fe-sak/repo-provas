@@ -83,8 +83,56 @@ export function getTestsByTeachers(token: string) {
   );
 }
 
-export function addView(testId: number, token: string) {
+export async function addView(testId: number, token: string) {
   const config = createConfig(token);
 
   return axios.post(`${BASE_URL}/tests/${testId}`, {}, config);
+}
+
+export type categoriesTypes = {
+  id: number;
+  name: string;
+}[];
+
+export async function getCategories(token: string) {
+  const config = createConfig(token);
+
+  return axios.get(`${BASE_URL}/categories`, config);
+}
+export type disciplinesTypes = {
+  id: number;
+  name: string;
+}[];
+export async function getDisciplines(token: string) {
+  const config = createConfig(token);
+
+  return axios.get(`${BASE_URL}/disciplines`, config);
+}
+
+export type teachersTypes = {
+  name: string;
+  disciplinesTeachers: {
+    id: number;
+    discipline: {
+      name: string;
+    };
+  }[];
+}[];
+
+export async function getTeachers(token: string) {
+  const config = createConfig(token);
+
+  return axios.get(`${BASE_URL}/teachers`, config);
+}
+
+export type testTypes = {
+  name: string;
+  pdfUrl: string;
+  categoryId: number;
+  disciplineTeacherId: number;
+};
+export async function createTest(token: string, test: testTypes) {
+  const config = createConfig(token);
+
+  return axios.post(`${BASE_URL}/tests`, test, config);
 }

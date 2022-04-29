@@ -10,6 +10,7 @@ interface IProps {
 }
 export const ToggleView: FC<IProps> = ({ toggle, handleChange }) => {
   const buttonStyles = {
+    borderTop: 'none',
     '&.Mui-selected': {
       color: 'primary',
       backgroundColor: 'secondary',
@@ -28,8 +29,7 @@ export const ToggleView: FC<IProps> = ({ toggle, handleChange }) => {
         display: 'flex',
         justifyContent: 'space-between',
         border: 'none',
-        marginTop: 5,
-        marginBottom: 5,
+        marginBottom: '10px',
       }}
     >
       <ToggleButton value='DISCIPLINA' sx={buttonStyles}>

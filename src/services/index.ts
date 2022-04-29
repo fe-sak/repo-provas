@@ -157,13 +157,7 @@ export async function getDataByTeachers(token: string) {
 
     return parsedData;
   } catch (error) {
-    console.log(error);
-
     errorHandler(error);
     return null;
   }
-}
-
-export async function addView(testId: number, token: string) {
-  await api.addView(testId, token);
 }
