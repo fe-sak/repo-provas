@@ -15,15 +15,15 @@ interface Toggles {
 
 export const TopMenu: FC<Toggles> = ({ toggle }) => {
   const placeholder = `Pesquise por ${toggle.toLowerCase()}`;
-  const { search, searchArray, setSearch } = useContext(SearchBarContext);
+  const { searchInput, searchOptions, setSearchInput } = useContext(SearchBarContext);
 
   const InputHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
+    setSearchInput(event.target.value);
   };
 
   const AutocompleteHandleChange = (_e: React.SyntheticEvent<Element, Event>, value: string | null) => {
-    if (value === null) setSearch('');
-    else setSearch(value);
+    if (value === null) setSearchInput('');
+    else setSearchInput(value);
   };
   return (
     <Container>
@@ -35,14 +35,14 @@ export const TopMenu: FC<Toggles> = ({ toggle }) => {
         id='search-bar'
         freeSolo
         sx={{ width: 0.7 }}
-        value={search}
-        inputValue={search}
+        value={searchInput}
+        inputValue={searchInput}
         onChange={AutocompleteHandleChange}
-        options={searchArray.map((option) => option)}
+        options={searchOptions.map((option) => option)}
         renderInput={(params) => (
           <TextField
             {...params}
-            value={search}
+            value={searchInput}
             onChange={InputHandleChange}
             placeholder={placeholder}
             variant='standard'

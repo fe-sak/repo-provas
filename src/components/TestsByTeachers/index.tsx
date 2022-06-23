@@ -12,19 +12,18 @@ import { TestByTeacher } from '../TestByTeacher';
 
 export const TestsByTeachers: FC = () => {
   const { auth } = useContext(AuthContext);
-  const { search, setSearchArray } = useContext(SearchBarContext);
+  const { searchInput, setSearchOptions } = useContext(SearchBarContext);
 
   const [tests, setTests] = useState<ParsedDataByTeachers>(null);
-  const [filteredTests, setFilteredTests] =
-    useState<ParsedDataByTeachers>(null);
+  const [filteredTests, setFilteredTests] = useState<ParsedDataByTeachers>(null);
 
   useEffect(() => {
-    setFilteredTests(filterByTeacher(tests, search));
-  }, [search]);
+    setFilteredTests(filterByTeacher(tests, searchInput));
+  }, [searchInput]);
 
   const fetchData = useCallback(async () => {
     const newData: ParsedDataByTeachers = await getDataByTeachers(auth);
-    if (newData) setSearchArray(newData.teachersSearch);
+    if (newData) setSearchOptions(newData.teachersSearch);
     setTests(newData);
     setFilteredTests(newData);
   }, []);

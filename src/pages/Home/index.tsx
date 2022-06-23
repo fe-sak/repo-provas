@@ -10,7 +10,7 @@ export type toggles = 'DISCIPLINA' | 'PESSOA INSTRUTORA' | 'ADICIONAR';
 
 export const Home: FC = () => {
   const [toggle, setToggle] = useState<toggles>('ADICIONAR');
-  const { setSearch } = useContext(SearchBarContext);
+  const { setSearchInput } = useContext(SearchBarContext);
   const auth = localStorage.getItem('auth');
   const navigate = useNavigate();
 
@@ -20,12 +20,9 @@ export const Home: FC = () => {
     }
   });
 
-  const handleChange = (
-    _event: React.MouseEvent<HTMLElement>,
-    newValue: toggles
-  ) => {
+  const handleChange = (_event: React.MouseEvent<HTMLElement>, newValue: toggles) => {
     if (newValue !== null) {
-      setSearch('');
+      setSearchInput('');
       setToggle(newValue);
     }
   };
