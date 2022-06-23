@@ -6,7 +6,7 @@ import * as api from '../../api/api';
 import { AuthContext } from '../../contexts/AuthContext';
 import { StyledLink } from '../styled components/StyledLinkMUI';
 
-interface IProps {
+interface Props {
   category: {
     name: string;
     tests: {
@@ -33,7 +33,8 @@ interface IProps {
     };
   };
 }
-export const TestByTeacher: FC<IProps> = ({ category, test }) => {
+
+export const TestByTeacher: FC<Props> = ({ category, test }) => {
   const { auth } = useContext(AuthContext);
   const [renderedViews, setRenderedViews] = useState<number>(test.views);
 
@@ -44,12 +45,7 @@ export const TestByTeacher: FC<IProps> = ({ category, test }) => {
 
   return (
     <ListItem key={`${category.name} ${test.name}`}>
-      <StyledLink
-        href={test.pdfUrl}
-        key={test.name}
-        target='_blank'
-        onClick={() => addView(test.id)}
-      >
+      <StyledLink href={test.pdfUrl} key={test.name} target='_blank' onClick={() => addView(test.id)}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           {test.name}
           <Typography variant='caption' color='gray' sx={{ marginRight: 1 }}>

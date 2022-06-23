@@ -1,17 +1,18 @@
 import React, { createContext, FC, ReactNode, useMemo, useState } from 'react';
 
-export const SearchBarContext = createContext<ISearchProps>({
-  search: '',
-  searchArray: [],
-  setSearch: (): void => undefined,
-  setSearchArray: (): void => undefined,
-});
-interface ISearchProps {
+interface SearchProps {
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   searchArray: string[];
   setSearchArray: React.Dispatch<React.SetStateAction<string[]>>;
 }
+
+export const SearchBarContext = createContext<SearchProps>({
+  search: '',
+  searchArray: [],
+  setSearch: (): void => undefined,
+  setSearchArray: (): void => undefined,
+});
 
 type Props = { children: ReactNode };
 
@@ -28,9 +29,5 @@ export const SearchProvider: FC<Props> = ({ children }) => {
     };
   }, [search, setSearch, searchArray, setSearchArray]);
 
-  return (
-    <SearchBarContext.Provider value={memoizedValues}>
-      {children}
-    </SearchBarContext.Provider>
-  );
+  return <SearchBarContext.Provider value={memoizedValues}>{children}</SearchBarContext.Provider>;
 };

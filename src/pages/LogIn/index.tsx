@@ -14,16 +14,17 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { errorHandler } from '../../utils/errorHandler';
 import { required, pattern } from '../../utils/reactHookFormConfig';
 
-export interface IForm {
+interface Form {
   email: string;
   password: string;
 }
+
 export const LogIn: FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
-  const initialFormValues: IForm = {
+  const initialFormValues: Form = {
     email: '',
     password: '',
   };
@@ -33,7 +34,7 @@ export const LogIn: FC = () => {
     formState: { errors },
   } = useForm({ defaultValues: initialFormValues });
 
-  async function submitForm(formValues: IForm) {
+  async function submitForm(formValues: Form) {
     try {
       setLoading(true);
       const { data: token }: { data: string } = await api.logIn(formValues);

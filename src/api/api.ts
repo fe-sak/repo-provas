@@ -6,22 +6,23 @@ function createConfig(token: string) {
   return { headers: { Authorization: `${token}` } };
 }
 
-interface ISignup {
+interface Signup {
   name: string;
   email: string;
   password: string;
 }
 
-export function signUp(body: ISignup) {
+export function signUp(body: Signup) {
   return axios.post(`${BASE_URL}/signup`, body);
 }
 
-type ILogin = Omit<ISignup, 'name'>;
+type ILogin = Omit<Signup, 'name'>;
+
 export function logIn(body: ILogin) {
   return axios.post(`${BASE_URL}/login`, body);
 }
 
-interface IDataByDisciplines {
+export type DataByDisciplines = {
   terms: {
     number: number;
     disciplines: {
@@ -43,9 +44,7 @@ interface IDataByDisciplines {
       }[];
     }[];
   }[];
-}
-
-export type DataByDisciplines = IDataByDisciplines | null;
+} | null;
 
 export function getTestsByDisciplines(token: string) {
   const config = createConfig(token);
@@ -53,7 +52,7 @@ export function getTestsByDisciplines(token: string) {
   return axios.get<DataByDisciplines>(`${BASE_URL}/tests`, config);
 }
 
-interface IDataByTeachers {
+export type DataByTeachers = {
   tests: {
     id: number;
     name: string;
@@ -71,16 +70,12 @@ interface IDataByTeachers {
       };
     };
   }[];
-}
+} | null;
 
-export type DataByTeachers = IDataByTeachers | null;
 export function getTestsByTeachers(token: string) {
   const config = createConfig(token);
 
-  return axios.get<DataByTeachers>(
-    `${BASE_URL}/tests/?byTeachers=true`,
-    config
-  );
+  return axios.get<DataByTeachers>(`${BASE_URL}/tests/?byTeachers=true`, config);
 }
 
 export async function addView(testId: number, token: string) {
@@ -89,7 +84,7 @@ export async function addView(testId: number, token: string) {
   return axios.post(`${BASE_URL}/tests/${testId}`, {}, config);
 }
 
-export type categoriesTypes = {
+export type categories = {
   id: number;
   name: string;
 }[];
@@ -99,17 +94,19 @@ export async function getCategories(token: string) {
 
   return axios.get(`${BASE_URL}/categories`, config);
 }
-export type disciplinesTypes = {
+
+export type disciplines = {
   id: number;
   name: string;
 }[];
+
 export async function getDisciplines(token: string) {
   const config = createConfig(token);
 
   return axios.get(`${BASE_URL}/disciplines`, config);
 }
 
-export type teachersTypes = {
+export type teachers = {
   name: string;
   disciplinesTeachers: {
     id: number;
@@ -131,6 +128,7 @@ export type testTypes = {
   categoryId: number;
   disciplineTeacherId: number;
 };
+
 export async function createTest(token: string, test: testTypes) {
   const config = createConfig(token);
 

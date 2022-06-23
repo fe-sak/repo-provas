@@ -4,11 +4,12 @@ import { FC, MouseEvent } from 'react';
 
 import { toggles } from '../../pages/Home';
 
-interface IProps {
+interface Props {
   toggle: toggles;
   handleChange: (event: MouseEvent<HTMLElement>, toggle: toggles) => void;
 }
-export const ToggleView: FC<IProps> = ({ toggle, handleChange }) => {
+
+export const ToggleView: FC<Props> = ({ toggle, handleChange }) => {
   const buttonStyles = {
     borderTop: 'none',
     '&.Mui-selected': {

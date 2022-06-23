@@ -11,24 +11,20 @@ import { StyledLink } from '../../components/styled components/StyledLink';
 import { SubmitButton } from '../../components/SubmitButton';
 import { toastSuccess } from '../../components/toasts';
 import { errorHandler } from '../../utils/errorHandler';
-import {
-  required,
-  maxLength,
-  minLength,
-  pattern,
-} from '../../utils/reactHookFormConfig';
+import { required, maxLength, minLength, pattern } from '../../utils/reactHookFormConfig';
 
-export interface IForm {
+interface Form {
   name: string;
   email: string;
   password: string;
   confirmPassword?: string;
 }
+
 export const SignUp: FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const initialFormValues: IForm = {
+  const initialFormValues: Form = {
     name: '',
     email: '',
     password: '',
@@ -43,7 +39,7 @@ export const SignUp: FC = () => {
 
   const password = watch('password');
 
-  async function submitForm(formValues: IForm) {
+  async function submitForm(formValues: Form) {
     try {
       setLoading(true);
       const { confirmPassword, ...formData } = formValues;
@@ -113,8 +109,7 @@ export const SignUp: FC = () => {
             {...register('confirmPassword', {
               required,
               minLength,
-              validate: (confirmPassword) =>
-                password === confirmPassword || 'As senhas não são iguais',
+              validate: (confirmPassword) => password === confirmPassword || 'As senhas não são iguais',
             })}
             disabled={loading}
           />

@@ -9,11 +9,11 @@ import { Logo } from '../Logo';
 import { LogOutButton } from '../LogOutButton';
 import { Container, TopBar } from './styles';
 
-interface IToggles {
+interface Toggles {
   toggle: toggles;
 }
 
-export const TopMenu: FC<IToggles> = ({ toggle }) => {
+export const TopMenu: FC<Toggles> = ({ toggle }) => {
   const placeholder = `Pesquise por ${toggle.toLowerCase()}`;
   const { search, searchArray, setSearch } = useContext(SearchBarContext);
 
@@ -21,10 +21,7 @@ export const TopMenu: FC<IToggles> = ({ toggle }) => {
     setSearch(event.target.value);
   };
 
-  const AutocompleteHandleChange = (
-    _e: React.SyntheticEvent<Element, Event>,
-    value: string | null
-  ) => {
+  const AutocompleteHandleChange = (_e: React.SyntheticEvent<Element, Event>, value: string | null) => {
     if (value === null) setSearch('');
     else setSearch(value);
   };
