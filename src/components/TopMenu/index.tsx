@@ -7,14 +7,17 @@ import { SearchBarContext } from '../../contexts/SearchBarContext';
 import { toggles } from '../../pages/Home';
 import { Logo } from '../Logo';
 import { LogOutButton } from '../LogOutButton';
-import { Container, TopBar } from './styles';
+import { Container } from './styles';
 
 interface Toggles {
   toggle: toggles;
 }
 
-export const TopMenu: FC<Toggles> = ({ toggle }) => {
-  const placeholder = `Pesquise por ${toggle.toLowerCase()}`;
+export const TopBar: FC<Toggles> = ({ toggle }) => {
+  let placeholder: string;
+  if (toggle === 'ADICIONAR') placeholder = '';
+  else placeholder = `Pesquise por ${toggle.toLowerCase()}`;
+
   const { searchInput, searchOptions, setSearchInput } = useContext(SearchBarContext);
 
   const InputHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,10 +31,10 @@ export const TopMenu: FC<Toggles> = ({ toggle }) => {
 
   return (
     <Container>
-      <TopBar>
+      <div>
         <Logo />
         <LogOutButton />
-      </TopBar>
+      </div>
 
       <Autocomplete
         id='search-bar'

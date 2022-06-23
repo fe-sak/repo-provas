@@ -6,22 +6,19 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 20px;
   padding-bottom: 30px;
   border-bottom: 1px solid #c4c4c4;
 
   @media (max-width: 400px) {
     padding-bottom: 15px;
   }
-`;
 
-export const TopBar = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 20px;
+  & > div:first-of-type {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 
   img {
     width: 100px;

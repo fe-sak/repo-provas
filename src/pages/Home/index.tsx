@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ToggleView } from '../../components/TogglePage';
 import { ToggleTestsView } from '../../components/ToggleTestsView';
-import { TopMenu } from '../../components/TopMenu';
+import { TopBar } from '../../components/TopMenu';
 import { SearchBarContext } from '../../contexts/SearchBarContext';
 
 export type toggles = 'DISCIPLINA' | 'PESSOA INSTRUTORA' | 'ADICIONAR';
@@ -29,7 +29,7 @@ export const Home: FC = () => {
 
   return (
     <>
-      <TopMenu toggle={toggle} />
+      <TopBar toggle={toggle} />
       <ToggleView toggle={toggle} handleChange={handleChange} />
       <ToggleTestsView toggle={toggle} />
     </>
