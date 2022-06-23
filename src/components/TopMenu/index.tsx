@@ -25,12 +25,14 @@ export const TopMenu: FC<Toggles> = ({ toggle }) => {
     if (value === null) setSearchInput('');
     else setSearchInput(value);
   };
+
   return (
     <Container>
       <TopBar>
         <Logo />
         <LogOutButton />
       </TopBar>
+
       <Autocomplete
         id='search-bar'
         freeSolo
@@ -39,6 +41,7 @@ export const TopMenu: FC<Toggles> = ({ toggle }) => {
         inputValue={searchInput}
         onChange={AutocompleteHandleChange}
         options={searchOptions.map((option) => option)}
+        disabled={toggle === 'ADICIONAR'}
         renderInput={(params) => (
           <TextField
             {...params}
