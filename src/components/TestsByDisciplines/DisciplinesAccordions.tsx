@@ -22,7 +22,7 @@ interface Props {
   };
 }
 
-export const DisciplineAccordion: FC<Props> = ({ term }) => {
+export const DisciplinesAccordions: FC<Props> = ({ term }) => {
   return (
     <>
       {term.disciplines.map((discipline) => (
