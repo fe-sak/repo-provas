@@ -21,7 +21,7 @@ interface Props {
 }
 
 export const CategoryAccordion: FC<Props> = ({ discipline, termNumber }) => {
-  if (discipline.categories.filter((category) => category.name).length === 0)
+  if (discipline.categories.length === 0)
     return (
       <Typography variant='caption' color='gray'>
         Esta disciplina não possui provas
