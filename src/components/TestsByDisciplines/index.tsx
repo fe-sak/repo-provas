@@ -7,7 +7,7 @@ import extractDisciplines from '../../utils/extractDisciplines';
 import { filterByDiscipline } from '../../utils/searchFilters';
 import { SmartAccordion } from '../Accordion';
 import { LoadingSpinner } from '../Loader/Loader';
-import { DisciplineAccordion } from './DisciplineAccordion';
+import { DisciplinesAccordions } from './DisciplinesAccordions';
 
 export const TestsByDisciplines: FC = () => {
   const { auth } = useContext(AuthContext);
@@ -43,7 +43,7 @@ export const TestsByDisciplines: FC = () => {
         <SmartAccordion
           key={term.number}
           summary={`${term.number}° período`}
-          details={<DisciplineAccordion term={term} />}
+          details={<DisciplinesAccordions term={term} />}
         />
       ))}
     </>
