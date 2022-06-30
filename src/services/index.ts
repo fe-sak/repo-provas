@@ -20,8 +20,8 @@ export type ParsedDataByDisciplines = {
   }[];
 } | null;
 
-function removeDuplicates(arr: string[]) {
-  const unique = arr.reduce((acc, curr) => {
+function removeDuplicates(array: string[]) {
+  const unique = array.reduce((acc, curr) => {
     if (!acc.includes(curr)) acc.push(curr);
     return acc;
   }, [] as string[]);
@@ -41,9 +41,8 @@ export async function getDataByDiscipline(token: string) {
   };
 
   try {
-    const { data }: { data: api.DataByDisciplines } =
-      await api.getTestsByDisciplines(token);
-
+    const { data }: { data: api.DataByDisciplines } = await api.getTestsByDisciplines(token);
+    console.log(data);
     if (data === null) return null;
 
     const parsedData = {
@@ -52,38 +51,35 @@ export async function getDataByDiscipline(token: string) {
           number: term.number,
           disciplines: term.disciplines.map((discipline) => ({
             name: discipline.name,
-            categories: discipline.disciplinesTeachers.map(
-              (disciplineTeacher) =>
-                disciplineTeacher.tests
-                  .map((test) => ({
-                    name: test.category.name,
-                    tests: disciplineTeacher.tests
-                      .filter(
-                        (innerTest) => innerTest.category === test.category
-                      )
-                      .map((test) => ({
-                        id: test.id,
-                        name: test.name,
-                        pdfUrl: test.pdfUrl,
-                        teacher: disciplineTeacher.teacher.name,
-                        views: test.views,
-                      })),
-                  }))
-                  .reduce(
-                    (acc, current) => {
-                      acc.tests.push(current.tests[0]);
-                      return {
-                        name: current.name,
-                        tests: acc.tests,
-                      };
-                    },
-                    { tests: [{}] } as tests
-                  )
+            categories: discipline.disciplinesTeachers.map((disciplineTeacher) =>
+              disciplineTeacher.tests
+                .map((test) => ({
+                  name: test.category.name,
+                  tests: disciplineTeacher.tests
+                    .filter((innerTest) => innerTest.category === test.category)
+                    .map((test) => ({
+                      id: test.id,
+                      name: test.name,
+                      pdfUrl: test.pdfUrl,
+                      teacher: disciplineTeacher.teacher.name,
+                      views: test.views,
+                    })),
+                }))
+                .reduce(
+                  (acc, current) => {
+                    acc.tests.push(current.tests[0]);
+
+                    return {
+                      name: current.name,
+                      tests: acc.tests,
+                    };
+                  },
+                  { tests: [{}] } as tests
+                )
             ),
           })),
         }))
-        .filter((term) => term.disciplines.length !== 0)
-        .sort(),
+        .filter((term) => term.disciplines.length !== 0),
     };
 
     return parsedData;
@@ -120,15 +116,11 @@ export type ParsedDataByTeachers = {
 } | null;
 export async function getDataByTeachers(token: string) {
   try {
-    const { data }: { data: api.DataByTeachers } = await api.getTestsByTeachers(
-      token
-    );
+    const { data }: { data: api.DataByTeachers } = await api.getTestsByTeachers(token);
 
     if (data === null) return null;
 
-    const teachersDuplicated = data.tests.map(
-      (test) => test.disciplineTeacher.teacher.name
-    );
+    const teachersDuplicated = data.tests.map((test) => test.disciplineTeacher.teacher.name);
     const teachers = removeDuplicates(teachersDuplicated);
 
     const parsedData: ParsedDataByTeachers = {
@@ -145,11 +137,7 @@ export async function getDataByTeachers(token: string) {
             name: category,
             tests: data.tests
               .map((test) => test)
-              .filter(
-                (test) =>
-                  test.category.name === category &&
-                  test.disciplineTeacher.teacher.name === teacher
-              ),
+              .filter((test) => test.category.name === category && test.disciplineTeacher.teacher.name === teacher),
           })),
         }))
         .sort(),

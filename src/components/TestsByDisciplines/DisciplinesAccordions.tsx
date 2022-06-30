@@ -23,9 +23,11 @@ interface Props {
 }
 
 export const DisciplinesAccordions: FC<Props> = ({ term }) => {
+  const { disciplines } = term;
+
   return (
     <>
-      {term.disciplines.map((discipline) => (
+      {disciplines.map((discipline) => (
         <SmartAccordion
           key={`${term.number} ${discipline.name}`}
           summary={discipline.name}
