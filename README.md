@@ -18,8 +18,9 @@ You can use it right now [clicking here!](https://repo-provas-chi.vercel.app/)
 
 [(Return to table of contents)](#table-of-contents)
 
-This is a website to upload tests's urls. 
-My first project using TypeScript and React.
+This is a full stack website to upload tests's urls. (Checkout the [back end repository](https://github.com/fe-sak/repo-provas-api))
+
+My first project using React with Typescript.
 
 ## Features
 
