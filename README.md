@@ -39,12 +39,12 @@ My first project using TypeScript and React.
 
 [(Return to table of contents)](#table-of-contents)
 
-![TypeScript](https://img.shields.io/badge/-TypeScript-05122A?style=flat&logo=typescript) \
-![React](https://img.shields.io/badge/-React-05122A?style=flat&logo=react) \
-![MUI](https://img.shields.io/badge/-MUI-05122A?style=flat&logo=mui) \
-![styled-components](https://img.shields.io/badge/-styled--components-05122A?style=flat&logo=styled-components) \
-![ESLint](https://img.shields.io/badge/-ESLint-05122A?style=flat&logo=eslint&logoColor=3e2c9a)
-![Prettier](https://img.shields.io/badge/-Prettier-05122A?style=flat&logo=prettier)
+![TypeScript](https://img.shields.io/badge/-TypeScript-black?style=flat&logo=typescript) \
+![React](https://img.shields.io/badge/-React-black?style=flat&logo=react) \
+![MUI](https://img.shields.io/badge/-MUI-black?style=flat&logo=mui) \
+![styled-components](https://img.shields.io/badge/-styled--components-black?style=flat&logo=styled-components) \
+![ESLint](https://img.shields.io/badge/-ESLint-black?style=flat&logo=eslint&logoColor=3e2c9a)
+![Prettier](https://img.shields.io/badge/-Prettier-black?style=flat&logo=prettier)
 - react-dom, react-hook-form, react-router-dom, react-toastify, spinners-react
 - ESLint, Prettier
 - lodash
