@@ -1,45 +1,89 @@
-# Getting Started with Create React App
+# RepoProvas
+<img src="https://user-images.githubusercontent.com/92526601/176753271-845e18d5-91db-41f1-a9f7-d1e60924bd16.gif" alt='screen recording of this project' />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can use it right now [clicking here!](https://repo-provas-chi.vercel.app/)
 
-## Available Scripts
+## Table of contents
+<!--ts-->
+   * [About](#about-this-project)
+   * [Features](#features)
+   * [Technologies](#technologies-used)
+   * [Prerequisites](#prerequisites-for-running-this-project-on-your-machine)
+   * [Install](#install-the-application-locally)
+   * [React](#learn-more-about-react-and-how-to-set-it-up)
+   
+<!--te-->
 
-In the project directory, you can run:
+## About this project
 
-### `npm start`
+[(Return to table of contents)](#table-of-contents)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is a website to upload tests's urls. 
+My first project using TypeScript and React.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
 
-### `npm test`
+[(Return to table of contents)](#table-of-contents)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [x] View tests organized by disciplines
+- [x] View tests organized by teachers
+- [x] Access a test's urls
+- [x] Increment a test's view count
+- [x] Search for a discipline
+- [x] Search for a teacher
+- [x] Upload a test urls
+- [ ] Create a new discipline
+- [ ] Create a new teacher
 
-### `npm run build`
+## Technologies used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[(Return to table of contents)](#table-of-contents)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![TypeScript](https://img.shields.io/badge/-TypeScript-05122A?style=flat&logo=typescript) \
+![React](https://img.shields.io/badge/-React-05122A?style=flat&logo=react) \
+![MUI](https://img.shields.io/badge/-MUI-05122A?style=flat&logo=mui) \
+![styled-components](https://img.shields.io/badge/-styled--components-05122A?style=flat&logo=styled-components) \
+![ESLint](https://img.shields.io/badge/-ESLint-05122A?style=flat&logo=eslint&logoColor=3e2c9a)
+![Prettier](https://img.shields.io/badge/-Prettier-05122A?style=flat&logo=prettier)
+- react-dom, react-hook-form, react-router-dom, react-toastify, spinners-react
+- ESLint, Prettier
+- lodash
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Prerequisites for running this project on your machine
 
-### `npm run eject`
+[(Return to table of contents)](#table-of-contents)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Bash Shell or any kind of shell for running commands in your terminal (all commands seen in this document are run inside a shell). If you're using Linux, it is installed by default. If you're using Windows, I suggest you follow this [guide](https://itsfoss.com/install-bash-on-windows/)
+- [Git](https://git-scm.com) installed for cloning the project and managing source code changes. You must also configure your git tool for connecting to GitHub using ssh. [The official GitHub guides](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+- Nodejs installed. It is recommended to use a version manager, such as [nvm](https://github.com/nvm-sh/nvm)
+- A IDE for coding. The most popular one is [VS Code](https://code.visualstudio.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Install the application locally
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[(Return to table of contents)](#table-of-contents)
 
-## Learn More
+```
+# Clone the repository:
+$ git@github.com:fe-sak/git@github.com:fe-sak/repo-provas.git
+
+# Access downloaded folder:
+$ cd repo-provas
+
+# Install dependencies: 
+$ yarn
+
+# _or_
+
+$ npm install
+```
+
+Run the app in development mode (run this command inside the project directory):
+```
+$ npm run start
+```
+
+## Learn more about react and how to set it up
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
