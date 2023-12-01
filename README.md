@@ -66,7 +66,7 @@ My first project using React with Typescript.
 
 ```
 # Clone the repository:
-$ git@github.com:fe-sak/git@github.com:fe-sak/repo-provas.git
+$ git clone git@github.com:fe-sak/repo-provas.git
 
 # Access downloaded folder:
 $ cd repo-provas
